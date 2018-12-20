@@ -4,14 +4,21 @@ import { Observable, Subject } from 'rxjs';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { Utilities } from "./utilities";
-
 import { SettingsService } from './settings.service';
+import { HttpUtilityService } from './httpUtility.service';
+
+import { SpotifySettings } from '../models/spotify-settings.model';
+
+import { SpotifyDuration } from '../models/spotify-duration.enum';
+import { SpotifyUserTopType } from '../models/spotify-type.enum';
 
 @Injectable()
 export class SpotifyService {
+  private meUrl = 'me/top/';
+
   constructor(private httpClient: HttpClient,
-    private settingsService: SettingsService) {
+    private settingsService: SettingsService,
+    private httpUtility: HttpUtilityService) {
   }
 
   public connectWithSpotify() {
@@ -26,24 +33,27 @@ export class SpotifyService {
         'state': '123'
       };
 
-      var serializedParams = this.serialize(spotifyParams, "");
+      var serializedParams = this.httpUtility.serialize(spotifyParams, "");
 
       window.location.href = `${settings.spotifyAccountsUrl}authorize?${serializedParams}`;
     });
   }
 
-  serialize(obj, prefix) {
-    var str = [],
-      p;
-    for (p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        var k = prefix ? prefix + "[" + p + "]" : p,
-          v = obj[p];
-        str.push((v !== null && typeof v === "object") ?
-          this.serialize(v, k) :
-          encodeURIComponent(k) + "=" + encodeURIComponent(v));
-      }
-    }
-    return str.join("&");
+  getUserTopTrackInformation(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Observable<any> {
+    const spotifyParams = new HttpParams();
+    spotifyParams.set('limit', '50');
+    spotifyParams.set('offset', '0');
+    spotifyParams.set('time_range', duration);
+
+    const url = `${settings.spotifyBaseUrl}${this.meUrl}${SpotifyUserTopType.Tracks}`;
+
+    return this.httpClient.get(url,
+      {
+        params: spotifyParams,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        })
+      });
   }
 }
