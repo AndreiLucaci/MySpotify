@@ -10,4 +10,13 @@ import { SpotifyTrack } from '../../models/spotify-track.model';
 export class TrackComponent {
   @Input()
   trackObj: SpotifyTrack;
+
+  getTrackImage(): string {
+    const album = this.trackObj.album.images.sort((v1, v2) => v2.width - v1.width)[0];
+    if (album && album.url) {
+      return album.url;
+    } else {
+      return "";
+    }
+  }
 }
