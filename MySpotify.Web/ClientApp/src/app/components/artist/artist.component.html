@@ -1,4 +1,4 @@
-<div class="row track" *ngIf="trackObj">
+<div class="row artist" *ngIf="artistObj">
   <div class="col">
     <mat-accordion>
       <mat-expansion-panel>
@@ -6,33 +6,23 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-8">
-                <a href="{{ trackObj.external_urls.spotify }}" class="link-header">{{ trackObj.name }}</a>
+                <a href="{{ artistObj.external_urls.spotify }}" class="link-header">{{ artistObj.name }}</a>
               </div>
               <div class="col-sm-3">
-                <img class="img" src="{{ getTrackImage() }}" />
+                <img class="img" src="{{ getArtistImage() }}" />
               </div>
             </div>
           </div>
         </mat-expansion-panel-header>
-        <div class="track-content">
+        <div class="artist-content">
           <div class="row">
             <div class="col">
               <div class="row">
                 <div class="col">
-                  <div class="label">Album: </div>
+                  <div class="label">Followers: </div>
                 </div>
                 <div class="col">
-                  <a href="{{ trackObj.album.external_urls.spotify }}" class="regular-link"> {{ trackObj.album.name }}</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="label">Explicit:</div>
-                </div>
-                <div class="col">
-                  <div [className]="trackObj.explicit ? 'red' : 'green'">
-                    {{ trackObj.explicit }}
-                  </div>
+                  <a href="{{ artistObj.followers.href }}" class="regular-link"> {{ artistObj.followers.total }}</a>
                 </div>
               </div>
             </div>
@@ -40,13 +30,13 @@
               <div class="row">
                 <div class="col-sm-3">
                   <div class="label">
-                    Artists:
+                    Genres:
                   </div>
                 </div>
                 <div class="col-sm-7">
                   <ul>
-                    <li *ngFor="let artist of trackObj.artists">
-                      <a href="{{ artist.external_urls.spotify }}" class="regular-link"> {{ artist.name }}</a>
+                    <li *ngFor="let genre of artistObj.genres">
+                      <div class="regular-link"> {{ genre }}</div>
                     </li>
                   </ul>
                 </div>
@@ -58,3 +48,4 @@
     </mat-accordion>
   </div>
 </div>
+

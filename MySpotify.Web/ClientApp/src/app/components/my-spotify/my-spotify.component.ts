@@ -8,6 +8,7 @@ import { SpotifyService } from '../../services/spotify.service';
 
 import { SpotifySettings } from '../../models/spotify-settings.model';
 import { SpotifyTrack } from '../../models/spotify-track.model';
+import { SpotifyArtist } from '../../models/spotify-artist.model';
 
 import { SpotifyDuration } from '../../models/spotify-duration.enum';
 
@@ -19,6 +20,7 @@ import { SpotifyDuration } from '../../models/spotify-duration.enum';
 export class MySpotifyComponent {
   isLoading = true;
   tracks = {};
+  artists = {};
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private httpUtility: HttpUtilityService, private settingsService: SettingsService, private spotifyService: SpotifyService) {
@@ -40,8 +42,31 @@ export class MySpotifyComponent {
 
   processInformation(accessToken: string) {
     this.settingsService.getSpotifySettings().subscribe(settings => {
+      this.processArtists(accessToken, settings);
       this.processTracks(accessToken, settings);
     });
+  }
+
+  processArtists(accessToken: string, settings: SpotifySettings) {
+    for (let duration in SpotifyDuration) {
+      if (!Number(duration)) {
+        this.processArtist(accessToken, duration as SpotifyDuration, settings);
+      }
+    }
+  }
+
+  processArtist(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings) {
+    this.isLoading = true;
+    return this.spotifyService.getUserTopArtistInformation(accessToken, duration, settings).subscribe(result => {
+        if (result && result.items) {
+          this.artists[SpotifyDuration[duration]] =
+            (result.items as SpotifyArtist[]);
+        }
+      },
+      err => console.error(err),
+      () => {
+        this.isLoading = false;
+      });
   }
 
   processTracks(accessToken: string, settings: SpotifySettings) {
@@ -54,24 +79,51 @@ export class MySpotifyComponent {
   processTrack(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Subscription {
 	  this.isLoading = true;
     return this.spotifyService.getUserTopTrackInformation(accessToken, duration, settings).subscribe(result => {
-      if (result.items) {
-        this.tracks[duration] = (result.items as SpotifyTrack[]).sort((v1, v2) => v2.popularity - v1.popularity);
-      }
-    }, err => console.error(err), () => {
-	    this.isLoading = false;
-    });
+        if (result && result.items) {
+          this.tracks[SpotifyDuration[duration]] =
+            (result.items as SpotifyTrack[]);
+        }
+      },
+      err => console.error(err),
+      () => {
+        this.isLoading = false;
+      });
   }
 
-  getLongTerm() {
-	  return this.getTracks(SpotifyDuration.LongTerm);
+  getLongTermArtist() {
+    const result = this.getArtists(SpotifyDuration.LongTerm);
+
+    return result;
   }
 
-  getMediumTerm() {
+  getMediumTermArtist() {
+    return this.getArtists(SpotifyDuration.MediumTerm);
+  }
+
+  getShortTermArtist() {
+    const result = this.getArtists(SpotifyDuration.ShortTerm);
+
+    return result;
+  }
+
+  getArtists(duration: SpotifyDuration): SpotifyArtist[] {
+    return this.artists[duration] as SpotifyArtist[];
+  }
+
+  getLongTermTrack() {
+    const result = this.getTracks(SpotifyDuration.LongTerm);
+
+	  return result;
+  }
+
+  getMediumTermTrack() {
 	  return this.getTracks(SpotifyDuration.MediumTerm);
   }
 
-  getShortTerm() {
-	  return this.getTracks(SpotifyDuration.ShortTerm);
+  getShortTermTrack() {
+    const result = this.getTracks(SpotifyDuration.ShortTerm);
+
+	  return result;
   }
 
   getTracks(duration: SpotifyDuration) : SpotifyTrack[] {

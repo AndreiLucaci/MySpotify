@@ -1,4 +1,4 @@
-.track {
+.artist {
   font-family: 'montserrat';
   color: #FF8B41;
   font-size: 14px;
@@ -11,8 +11,8 @@
 }
 
 a {
-	font-family: 'montserrat';
-	font-size: 14px;
+  font-family: 'montserrat';
+  font-size: 14px;
 }
 
 .img {
@@ -46,7 +46,7 @@ a {
   color: #FCFCD4;
 }
 
-.track-content {
+.artist-content {
   margin-top: 20px;
 }
 

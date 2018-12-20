@@ -40,16 +40,38 @@ export class SpotifyService {
   }
 
   getUserTopTrackInformation(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Observable<any> {
-    const spotifyParams = new HttpParams();
-    spotifyParams.set('limit', '50');
-    spotifyParams.set('offset', '0');
-    spotifyParams.set('time_range', duration);
+	  const spotifyParams = {
+		  limit: 20,
+		  offset: 0,
+        'time_range': SpotifyDuration[duration]
+	  };
 
-    const url = `${settings.spotifyBaseUrl}${this.meUrl}${SpotifyUserTopType.Tracks}`;
+	  const querySring = this.httpUtility.serialize(spotifyParams, "");
+    
+    const url = `${settings.spotifyBaseUrl}${this.meUrl}${SpotifyUserTopType.Tracks}?${querySring}`;
 
     return this.httpClient.get(url,
       {
-        params: spotifyParams,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        })
+      });
+  }
+
+  getUserTopArtistInformation(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Observable<any> {
+	  const spotifyParams = {
+		  limit: 20,
+		  offset: 0,
+        'time_range': SpotifyDuration[duration]
+	  };
+
+	  const querySring = this.httpUtility.serialize(spotifyParams, "");
+    
+    const url = `${settings.spotifyBaseUrl}${this.meUrl}${SpotifyUserTopType.Artists}?${querySring}`;
+
+    return this.httpClient.get(url,
+      {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`
