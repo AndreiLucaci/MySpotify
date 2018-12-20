@@ -55,7 +55,7 @@ export class MySpotifyComponent {
 	  this.isLoading = true;
     return this.spotifyService.getUserTopTrackInformation(accessToken, duration, settings).subscribe(result => {
       if (result.items) {
-        this.tracks[duration] = (result.items as SpotifyTrack[]).sort((v1, v2) => v2.popularity - v1.popularity);
+        this.tracks[SpotifyDuration[duration]] = (result.items as SpotifyTrack[]).sort((v1, v2) => v2.popularity - v1.popularity);
       }
     }, err => console.error(err), () => {
 	    this.isLoading = false;
@@ -63,7 +63,9 @@ export class MySpotifyComponent {
   }
 
   getLongTerm() {
-	  return this.getTracks(SpotifyDuration.LongTerm);
+    const result = this.getTracks(SpotifyDuration.LongTerm);
+
+	  return result;
   }
 
   getMediumTerm() {
@@ -71,7 +73,9 @@ export class MySpotifyComponent {
   }
 
   getShortTerm() {
-	  return this.getTracks(SpotifyDuration.ShortTerm);
+    const result = this.getTracks(SpotifyDuration.ShortTerm);
+
+	  return result;
   }
 
   getTracks(duration: SpotifyDuration) : SpotifyTrack[] {

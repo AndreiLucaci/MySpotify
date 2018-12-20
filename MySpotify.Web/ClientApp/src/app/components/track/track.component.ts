@@ -9,5 +9,5 @@ import { SpotifyTrack } from '../../models/spotify-track.model';
 })
 export class TrackComponent {
   @Input()
-  trackObj: SpotifyTrack = new SpotifyTrack();
+  trackObj: SpotifyTrack;
 }
