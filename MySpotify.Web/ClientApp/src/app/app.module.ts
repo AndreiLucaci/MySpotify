@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; 
 
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -20,8 +21,14 @@ import { AppComponent } from './components/app/app.component';
 
 import { SpotifyAuthorizeComponent } from "./components/spotify-authorize/spotify-authorize.component";
 import { MySpotifyComponent } from "./components/my-spotify/my-spotify.component";
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { TileTrackComponent } from './components/tile-track/tile-track.component';
+import { TrackComponent } from './components/track/track.component';
+
 import { SettingsService } from "./services/settings.service";
+import { HttpUtilityService } from "./services/httpUtility.service";
 import { SpotifyService } from "./services/spotify.service";
 
 @NgModule({
@@ -29,6 +36,7 @@ import { SpotifyService } from "./services/spotify.service";
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CommonModule,
     AppRoutingModule,
     ToastaModule.forRoot(),
     TooltipModule.forRoot(),
@@ -42,13 +50,18 @@ import { SpotifyService } from "./services/spotify.service";
     AppComponent,
     SpotifyAuthorizeComponent,
     MySpotifyComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavBarComponent,
+    LoadingComponent,
+    TileTrackComponent,
+    TrackComponent,
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },
     { provide: ErrorHandler, useClass: AppErrorHandler },
     SettingsService,
     SpotifyService,
+	  HttpUtilityService
   ],
   bootstrap: [AppComponent]
 })

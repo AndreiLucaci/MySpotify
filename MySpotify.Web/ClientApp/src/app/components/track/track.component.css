@@ -1,8 +1,5 @@
-.tracks {
+.track {
 	font-family: 'montserrat';
 	color: #FCFCD4;
-}
-
-.h2 {
-	margin: 0 auto;
+	font-size: 12px;
 }

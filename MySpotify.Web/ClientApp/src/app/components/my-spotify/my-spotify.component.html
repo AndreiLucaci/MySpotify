@@ -1,0 +1,54 @@
+<div *ngIf="isLoading">
+	<loading></loading>
+</div>
+
+<div *ngIf="!isLoading" class="container tracks">
+	<div class="row">
+		<h2 class="text-center h2">
+			Long term
+		</h2>
+	</div>
+	<div class="row">
+		<div class="col">
+			1 of 2
+		</div>
+		<div class="col">
+			<div *ngFor="let item of getLongTerm()">
+				<track [trackObj]="item"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<h2 class="text-center h2">
+			Medium term
+		</h2>
+	</div>
+	<div class="row">
+		<div class="col">
+			1 of 2
+		</div>
+		<div class="col">
+			<div *ngFor="let item of getMediumTerm()">
+				<track [trackObj]="item"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<h2 class="text-center h2">
+			Short term
+		</h2>
+	</div>
+	<div class="row">
+		<div class="col">
+			1 of 2
+		</div>
+		<div class="col">
+			<div *ngFor="let item of getShortTerm()">
+				<track [trackObj]="item"/>
+			</div>
+		</div>
+	</div>
+</div>
+
