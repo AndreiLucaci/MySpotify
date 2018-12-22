@@ -1,0 +1,24 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <div class="content">
+                <div class="row">
+                    <h3>Chart for genre</h3>
+                </div>
+            </div>
+        </mat-expansion-panel-header>
+        <div class="content">
+            <div class="row">
+                <ngx-charts-pie-chart [view]="view"
+                                      [scheme]="colorScheme"
+                                      [results]="items"
+                                      [legend]="showLegend"
+                                      [explodeSlices]="explodeSlices"
+                                      [labels]="showLabels"
+                                      [doughnut]="doughnut"
+                                      [gradient]="gradient">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

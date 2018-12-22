@@ -1,0 +1,34 @@
+<div class="items-table">
+	<mat-accordion>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<div class="container">
+					<div class="row">
+						<h2 class="text-center h2">
+							{{ title }}
+						</h2>
+					</div>
+				</div>
+			</mat-expansion-panel-header>
+			<div class="items-body">
+				<div class="row">
+					<div class="col">
+						<div class="row">
+							<h3 class="h3">Artists</h3>
+						</div>
+						<artist *ngFor="let item of artists" [artistObj]="item"></artist>
+					</div>
+					<div class="col">
+						<div class="row">
+							<h3 class="h3">Tracks</h3>
+						</div>
+						<track *ngFor="let item of tracks" [trackObj]="item" />
+					</div>
+				</div>
+				<div class="row">
+					<genre-chart [rawItems]="artists"></genre-chart>
+				</div>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>

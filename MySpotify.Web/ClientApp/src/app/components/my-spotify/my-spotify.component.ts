@@ -13,120 +13,105 @@ import { SpotifyArtist } from '../../models/spotify-artist.model';
 import { SpotifyDuration } from '../../models/spotify-duration.enum';
 
 @Component({
-  selector: 'my-spotify',
-  templateUrl: './my-spotify.component.html',
-  styleUrls: ['./my-spotify.component.css']
+    selector: 'my-spotify',
+    templateUrl: './my-spotify.component.html',
+    styleUrls: ['./my-spotify.component.css']
 })
 export class MySpotifyComponent {
-  isLoading = true;
-  tracks = {};
-  artists = {};
+    isLoading = true;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router,
-    private httpUtility: HttpUtilityService, private settingsService: SettingsService, private spotifyService: SpotifyService) {
-    this.activatedRoute.fragment.subscribe((hash: string) => {
-      if (hash) {
-        let params = this.httpUtility.parseQuery(hash);
+    shortTermArtists: SpotifyArtist[] = [];
+    mediumTermArtists: SpotifyArtist[] = [];
+    longTermArtists: SpotifyArtist[] = [];
 
-        if (params.hasOwnProperty('access_token')) {
-          this.httpUtility.removeHash();
+    shortTermTracks: SpotifyTrack[] = [];
+    mediumTermTracks: SpotifyTrack[] = [];
+    longTermTracks: SpotifyTrack[] = [];
 
-          this.processInformation(params['access_token']);
+    constructor(private activatedRoute: ActivatedRoute, private router: Router,
+        private httpUtility: HttpUtilityService, private settingsService: SettingsService, private spotifyService: SpotifyService) {
 
-        }
-      } else {
-        router.navigateByUrl("/spotify-authorize");
-      }
-    });
-  }
+        this.activatedRoute.fragment.subscribe((hash: string) => {
+            if (hash) {
+                let params = this.httpUtility.parseQuery(hash);
 
-  processInformation(accessToken: string) {
-    this.settingsService.getSpotifySettings().subscribe(settings => {
-      this.processArtists(accessToken, settings);
-      this.processTracks(accessToken, settings);
-    });
-  }
+                if (params.hasOwnProperty('access_token')) {
+                    this.httpUtility.removeHash();
 
-  processArtists(accessToken: string, settings: SpotifySettings) {
-    for (let duration in SpotifyDuration) {
-      if (!Number(duration)) {
-        this.processArtist(accessToken, duration as SpotifyDuration, settings);
-      }
+                    this.processInformation(params['access_token']);
+
+                }
+            } else {
+                router.navigateByUrl("/spotify-authorize");
+            }
+        });
     }
-  }
 
-  processArtist(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings) {
-    this.isLoading = true;
-    return this.spotifyService.getUserTopArtistInformation(accessToken, duration, settings).subscribe(result => {
-        if (result && result.items) {
-          this.artists[SpotifyDuration[duration]] =
-            (result.items as SpotifyArtist[]);
-        }
-      },
-      err => console.error(err),
-      () => {
-        this.isLoading = false;
-      });
-  }
-
-  processTracks(accessToken: string, settings: SpotifySettings) {
-    for (let duration in SpotifyDuration) {
-      if (!Number(duration))
-        this.processTrack(accessToken, duration as SpotifyDuration, settings);
+    processInformation(accessToken: string) {
+        this.settingsService.getSpotifySettings().subscribe(settings => {
+            this.processArtists(accessToken, settings);
+            this.processTracks(accessToken, settings);
+        });
     }
-  }
 
-  processTrack(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Subscription {
-	  this.isLoading = true;
-    return this.spotifyService.getUserTopTrackInformation(accessToken, duration, settings).subscribe(result => {
-        if (result && result.items) {
-          this.tracks[SpotifyDuration[duration]] =
-            (result.items as SpotifyTrack[]);
+    processArtists(accessToken: string, settings: SpotifySettings) {
+        for (let duration in SpotifyDuration) {
+            if (!Number(duration)) {
+                this.processArtist(accessToken, duration as SpotifyDuration, settings);
+            }
         }
-      },
-      err => console.error(err),
-      () => {
-        this.isLoading = false;
-      });
-  }
+    }
 
-  getLongTermArtist() {
-    const result = this.getArtists(SpotifyDuration.LongTerm);
+    processArtist(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings) {
+        this.isLoading = true;
+        return this.spotifyService.getUserTopArtistInformation(accessToken, duration, settings).subscribe(result => {
+            if (result && result.items) {
+                switch (SpotifyDuration[duration]) {
+                    case SpotifyDuration.ShortTerm:
+	                    this.shortTermArtists.push(...(result.items as SpotifyArtist[]));
+                        break;
+                    case SpotifyDuration.MediumTerm:
+                        this.mediumTermArtists.push(...(result.items as SpotifyArtist[]));
+                        break;
+                    case SpotifyDuration.LongTerm:
+                        this.longTermArtists.push(...(result.items as SpotifyArtist[]));
+                        break;
+                }
+            }
+        },
+            err => console.error(err),
+            () => {
+                this.isLoading = false;
+            });
+    }
 
-    return result;
-  }
+    processTracks(accessToken: string, settings: SpotifySettings) {
+        for (let duration in SpotifyDuration) {
+            if (!Number(duration))
+                this.processTrack(accessToken, duration as SpotifyDuration, settings);
+        }
+    }
 
-  getMediumTermArtist() {
-    return this.getArtists(SpotifyDuration.MediumTerm);
-  }
-
-  getShortTermArtist() {
-    const result = this.getArtists(SpotifyDuration.ShortTerm);
-
-    return result;
-  }
-
-  getArtists(duration: SpotifyDuration): SpotifyArtist[] {
-    return this.artists[duration] as SpotifyArtist[];
-  }
-
-  getLongTermTrack() {
-    const result = this.getTracks(SpotifyDuration.LongTerm);
-
-	  return result;
-  }
-
-  getMediumTermTrack() {
-	  return this.getTracks(SpotifyDuration.MediumTerm);
-  }
-
-  getShortTermTrack() {
-    const result = this.getTracks(SpotifyDuration.ShortTerm);
-
-	  return result;
-  }
-
-  getTracks(duration: SpotifyDuration) : SpotifyTrack[] {
-	  return this.tracks[duration] as SpotifyTrack[];
-  }
+    processTrack(accessToken: string, duration: SpotifyDuration, settings: SpotifySettings): Subscription {
+        this.isLoading = true;
+        return this.spotifyService.getUserTopTrackInformation(accessToken, duration, settings).subscribe(result => {
+            if (result && result.items) {
+                switch (SpotifyDuration[duration]) {
+                    case SpotifyDuration.ShortTerm:
+                        this.shortTermTracks.push(...(result.items as SpotifyTrack[]));
+                        break;
+                    case SpotifyDuration.MediumTerm:
+                        this.mediumTermTracks.push(...(result.items as SpotifyTrack[]));
+                        break;
+                    case SpotifyDuration.LongTerm:
+                        this.longTermTracks.push(...(result.items as SpotifyTrack[]));
+                        break;
+                }
+            }
+        },
+            err => console.error(err),
+            () => {
+                this.isLoading = false;
+            });
+    }
 }
