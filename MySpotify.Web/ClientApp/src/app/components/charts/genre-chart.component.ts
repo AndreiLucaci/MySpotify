@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-
 import { SpotifyArtist } from '../../models/spotify-artist.model';
 
 @Component({
@@ -24,7 +22,7 @@ export class GenreChartComponent implements OnInit {
     timeline = true;
 
     colorScheme = {
-		domain: ['#324B4E', '#33706A', '#44957A', '#6FB97C', '#ACDB76', '#F9F871', '#415D6B', '#5C6E87', '#827D9E', '#AD8BAB',
+		domain: ['#33706A', '#44957A', '#6FB97C', '#ACDB76', '#F9F871', '#415D6B', '#5C6E87', '#827D9E', '#AD8BAB',
 			'#D69BAE', '#627C7F', '#BEFBFF', '#FF8B41', '#D97639', '#2A676E', '#90F8B5', '#57BF80', '#13884E']
 	};
 
