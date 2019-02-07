@@ -1,14 +1,22 @@
 .header {
-	text-align: center;
-  margin: 30px auto;
-
-  margin-bottom: 100px;
-
-  background-color: red;
-  cursor: pointer;
+    text-align: center;
+    margin: 30px auto;
+    margin-bottom: 100px;
+    background-color: red;
+    cursor: pointer;
 }
 
 .spotify-font {
-  font-family: 'montserrat';
-  color: #FCFCD4;
+    font-family: 'montserrat';
+    color: #FCFCD4;
 }
+
+a {
+    text-decoration: none;
+    color: #FCFCD4;
+}
+
+    a:visited {
+        text-decoration: none;
+        color: #FCFCD4;
+    }
