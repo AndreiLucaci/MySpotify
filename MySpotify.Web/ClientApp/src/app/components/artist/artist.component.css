@@ -53,3 +53,120 @@ a {
 ul {
   list-style: none;
 }
+
+
+.track-features .tracks-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    margin: 1.5625rem 0;
+}
+
+@media (min-width: 60em) {
+    .track-features .tracks-row {
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+    }
+}
+
+.track-features .tracks-row .album-placeholder {
+    width: 100%;
+    margin: 0 auto;
+    background-size: cover;
+    background-color: black;
+    background-position: center center;
+}
+
+    .track-features .tracks-row .album-placeholder:before {
+        content: '';
+        float: left;
+        padding-bottom: 100%;
+        transition: padding-bottom 0.5s ease 0s;
+    }
+
+    .track-features .tracks-row .album-placeholder:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+.track-features .track-col {
+    margin: 0 1.5625rem;
+    width: 15.625rem;
+}
+
+@media (min-width: 60em) {
+    .track-features .track-col {
+        margin: 0;
+    }
+}
+
+.track-features .track-col:nth-child(3) {
+    display: none;
+}
+
+@media (min-width: 60em) {
+    .track-features .track-col:nth-child(3) {
+        display: block;
+    }
+}
+
+.track-features .track-col:nth-child(2) {
+    display: none;
+}
+
+@media (min-width: 40em) {
+    .track-features .track-col:nth-child(2) {
+        display: block;
+    }
+}
+
+.audio-player {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #ffffff;
+    margin: 0;
+    font-size: 0.75rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+@media (min-width: 48em) {
+    .audio-player {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 60em) {
+    .audio-player {
+        font-size: 1rem;
+    }
+}
+
+.audio-player .playing-info {
+    padding-left: 1vw;
+    text-align: left;
+}
+
+.audio-player .playing-song {
+    font-family: "Circular";
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.audio-player .playing-artist {
+    margin-top: -0.125rem;
+}

@@ -1,21 +1,192 @@
 .intro {
-    background-color: #FCFCD4;
     font-size: 20px;
     padding: 10px;
-    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    font-family: 'montserrat';
+    font-family: 'Circular Std Book';
+    color: #003B4F;
 }
 
-.btn {
-    background-color: red;
-    font-family: 'montserrat';
-    color: #FCFCD4;
-
-    font-size: 24px;
+.header {
+    margin: 50px auto;
+    font-family: 'Circular Std Bold';
+    text-align: center;
 }
 
-.btn-primary {
-    border-color: black;
+.spotify-login {
+    margin: 50px auto;
+    text-align: center;
 }
+
+.button-rounded {
+    color: #1e3264;
+    font-family: "Circular Std Book";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.0625rem;
+    background: #ffffff;
+    display: inline-block;
+    border-radius: 1.1875rem;
+    height: 2.375rem;
+    padding: 0 2.1875rem;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.25s ease-out 0s;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+}
+
+@media (min-width: 48em) {
+    .button-rounded {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 60em) {
+    .button-rounded {
+        font-size: 0.875rem;
+    }
+}
+
+.button-rounded .text {
+    color: #1e3264;
+    display: inline-block;
+    position: absolute;
+    transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    line-height: 2.1875rem;
+}
+
+.button-rounded .text-roll {
+    color: #ffffff;
+    opacity: 0;
+    line-height: 2.1875rem;
+    display: inline-block;
+    position: relative;
+    -webkit-transform: translateY(1.25rem);
+    transform: translateY(1.25rem);
+    transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@media (min-width: 60em) {
+    .button-rounded {
+        height: 2.8125rem;
+        border-radius: 1.5625rem;
+    }
+
+        .button-rounded .text {
+            line-height: 2.625rem;
+        }
+
+        .button-rounded .text-roll {
+            line-height: 2.625rem;
+        }
+}
+
+.button-rounded.inverted {
+    background: #1e3264;
+}
+
+    .button-rounded.inverted .text {
+        color: #ffffff;
+    }
+
+    .button-rounded.inverted .text-roll {
+        color: #003B4F;
+    }
+
+.button-rounded.primary {
+    margin-right: 0;
+}
+
+@media (min-width: 40em) {
+    .button-rounded.primary {
+        margin-right: 0.9375rem;
+    }
+}
+
+.button-rounded.primary .text {
+    color: white;
+}
+
+.button-rounded.primary .text-roll {
+    color: #003B4F;
+}
+
+.button-rounded.secondary {
+    margin-left: 0;
+}
+
+@media (min-width: 40em) {
+    .button-rounded.secondary {
+        margin-left: 0.9375rem;
+    }
+}
+
+.button-rounded.thin {
+    padding: 0 1.25rem;
+}
+
+.button-rounded.outline-light {
+    border: 2px solid #ffffff;
+}
+
+.button-rounded.outline-dark {
+    border: 2px solid #1e3264;
+    color: #1e3264;
+    background-color: transparent;
+}
+
+.button-rounded.large {
+    border: solid 3px #ffffff;
+    border-radius: 1.875rem;
+    height: 3.75rem;
+    padding: 0 3.4375rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+}
+
+@media (min-width: 48em) {
+    .button-rounded.large {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 60em) {
+    .button-rounded.large {
+        font-size: 1.125rem;
+    }
+}
+
+.button-rounded.large .text {
+    color: #ffffff;
+    line-height: 3.375rem;
+}
+
+.button-rounded.large .text-roll {
+    color: #1e3264;
+    line-height: 3.375rem;
+}
+
+.button-rounded:hover {
+    background: #1e3264;
+}
+
+    .button-rounded:hover .text {
+        -webkit-transform: translateY(-1.25rem);
+        transform: translateY(-1.25rem);
+        opacity: 0;
+    }
+
+    .button-rounded:hover .text-roll {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .button-rounded:hover.inverted, .button-rounded:hover.large {
+        background: #ffffff;
+    }
+
+    .button-rounded:hover.outline-dark {
+        background-color: midnight;
+    }
