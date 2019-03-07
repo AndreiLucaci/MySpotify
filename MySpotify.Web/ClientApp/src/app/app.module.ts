@@ -65,6 +65,7 @@ import { SpotifyAuthorizeComponent } from "./components/spotify-authorize/spotif
 import { MySpotifyComponent } from "./components/my-spotify/my-spotify.component";
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SideNavComponent } from './components/nav-bar/side-nav.component';
 import { LoadingComponent } from './components/loading/loading.component';
 
 import { TileTrackComponent } from './components/tile-track/tile-track.component';
@@ -145,7 +146,8 @@ import { HomeComponent } from './components/home/home.component';
         TrackComponent,
         TileArtistComponent,
         ArtistComponent,
-        HomeComponent
+        HomeComponent,
+        SideNavComponent
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },

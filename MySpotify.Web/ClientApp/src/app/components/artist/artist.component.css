@@ -170,3 +170,32 @@ ul {
 .audio-player .playing-artist {
     margin-top: -0.125rem;
 }
+
+
+.artist-container {
+    width: 600px;
+    height: 400px;
+    background-color: #627c7f
+}
+
+
+.artist-img {
+    border-radius: 50%;
+    height: 200px;
+}
+
+.artist-wrapper {
+    position: relative;
+}
+
+.artist-middle {
+    width: 20px;
+    background-color: white;
+    display: block;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    top: 90px;
+    left: 90px;
+}

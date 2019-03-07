@@ -5,7 +5,10 @@
     </div>
 
     <div *ngIf="!isLoading" class="container items">
-        <div class="items-table">
+
+        <side-nav></side-nav>
+
+        <!--<div class="items-table">
             <mat-accordion>
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
@@ -29,7 +32,7 @@
                                 <div class="row">
                                     <h3 class="h3">Tracks</h3>
                                 </div>
-                                <track *ngFor="let item of getShortTermTrack()" [trackObj]="item" />
+                                <track *ngFor="let item of getShortTermTrack()" [trackObj]="item"/>
                             </div>
                         </div>
                     </div>
@@ -60,7 +63,7 @@
                                 <div class="row">
                                     <h3 class="h3">Tracks</h3>
                                 </div>
-                                <track *ngFor="let item of getMediumTermTrack()" [trackObj]="item" />
+                                <track *ngFor="let item of getMediumTermTrack()" [trackObj]="item"/>
                             </div>
                         </div>
                     </div>
@@ -92,13 +95,13 @@
                                 <div class="row">
                                     <h3 class="h3">Tracks</h3>
                                 </div>
-                                <track *ngFor="let item of getLongTermTrack()" [trackObj]="item" />
+                                <track *ngFor="let item of getLongTermTrack()" [trackObj]="item"/>
                             </div>
                         </div>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>
-        </div>
+        </div>-->
     </div>
 
 </div>
