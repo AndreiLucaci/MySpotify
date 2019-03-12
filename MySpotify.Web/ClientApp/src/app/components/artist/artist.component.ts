@@ -19,4 +19,8 @@ export class ArtistComponent {
             return "";
         }
     }
+
+    getBackgroundImage() {
+        return { 'background': `url(${this.getArtistImage()}) center/cover no-repeat` };
+    }
 }

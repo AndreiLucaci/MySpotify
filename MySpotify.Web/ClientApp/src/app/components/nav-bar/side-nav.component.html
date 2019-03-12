@@ -5,10 +5,10 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="#">Tracks</a>
+                <a class="menu-item" (click)="setSelectedItem(type.Tracks, duration.LongTerm)">Tracks</a>
             </div>
             <div class="col">
-                <a href="#">Artists</a>
+                <a class="menu-item" (click)="setSelectedItem(type.Artists, duration.LongTerm)">Artists</a>
             </div>
         </div>
     </div>
@@ -18,10 +18,10 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="#">Tracks</a>
+                <a class="menu-item" (click)="setSelectedItem(type.Tracks, duration.MediumTerm)">Tracks</a>
             </div>
             <div class="col">
-                <a href="#">Artists</a>
+                <a class="menu-item" (click)="setSelectedItem(type.Artists, duration.MediumTerm)">Artists</a>
             </div>
         </div>
     </div>
@@ -31,10 +31,10 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="#">Tracks</a>
+                <div class="menu-item" (click)="setSelectedItem(type.Tracks, duration.ShortTerm)">Tracks</div>
             </div>
             <div class="col">
-                <a href="#">Artists</a>
+                <div class="menu-item" (click)="setSelectedItem(type.Artists, duration.ShortTerm)">Artists</div>
             </div>
         </div>
     </div>

@@ -14,6 +14,7 @@
     transform-origin: left top;
     -webkit-transform: rotate(-90deg) translateX(-100%);
     transform: rotate(-90deg) translateX(-100%);
+    left: 0;
 }
 
 @media (min-width: 48em) {
@@ -36,13 +37,13 @@
 
 @media (min-width: 48em) {
     .nav .tl {
-        font-size: 0.6875rem;
+        font-size: 0.7875rem;
     }
 }
 
 @media (min-width: 60em) {
     .nav .tl {
-        font-size: 0.75rem;
+        font-size: 0.89rem;
     }
 }
 
@@ -66,4 +67,8 @@
 .nav .tl.active .underline {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+}
+
+.nav .tl .menu-item {
+    color: red;
 }

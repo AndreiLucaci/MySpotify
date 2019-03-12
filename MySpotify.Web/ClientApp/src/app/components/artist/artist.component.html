@@ -1,26 +1,13 @@
 <div class="row artist" *ngIf="artistObj">
-    <div clsas="container artist-container">
-        <div class="artist-wrapper">
-            <div class="row">
-                <div class="col">
-                    <img class="artist-img" src="{{ getArtistImage() }}" />
-                    <i class="artist-middle"></i>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <a href="{{ artistObj.external_urls.spotify }}" class="link-header">{{ artistObj.name }}</a>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="label">Followers: </div>
-                        </div>
-                        <div class="col">
-                            <a href="{{ artistObj.followers.href }}" class="regular-link"> {{ artistObj.followers.total }}</a>
-                        </div>
-                    </div>
+    <div class="artist card">
+        <div class="wrapper" [ngStyle]="getBackgroundImage()">
+            <div class="data">
+                <div class="content">
+                    <span class="author">Artist</span>
+                    <h1 class="title"><a href="{{ artistObj.external_urls.spotify }}">{{ artistObj.name }}</a></h1>
+                    <p class="text">Followers: <a href="{{ artistObj.followers.href }}" class="regular-link"> {{ artistObj.followers.total }}</a></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

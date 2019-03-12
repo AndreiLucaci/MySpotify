@@ -6,7 +6,10 @@
 
     <div *ngIf="!isLoading" class="container items">
 
-        <side-nav></side-nav>
+        <side-nav (selectedItemChanged)="navSelectedItem($event)"></side-nav>
+
+        <artist-page *ngIf="selectedArtists" [artists]="selectedArtists"></artist-page>
+        <track-page *ngIf="selectedTracks" [tracks]="selectedTracks"></track-page>
 
         <!--<div class="items-table">
             <mat-accordion>

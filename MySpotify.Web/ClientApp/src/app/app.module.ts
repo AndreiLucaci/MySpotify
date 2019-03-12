@@ -72,6 +72,8 @@ import { TileTrackComponent } from './components/tile-track/tile-track.component
 import { TrackComponent } from './components/track/track.component';
 import { TileArtistComponent } from './components/tile-artist/tile-artist.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { ArtistPageComponent } from './components/artist/artist-page.component';
+import { TrackPageComponent } from './components/track/track-page.component';
 
 import { SettingsService } from "./services/settings.service";
 import { HttpUtilityService } from "./services/httpUtility.service";
@@ -146,6 +148,8 @@ import { HomeComponent } from './components/home/home.component';
         TrackComponent,
         TileArtistComponent,
         ArtistComponent,
+        ArtistPageComponent,
+        TrackPageComponent,
         HomeComponent,
         SideNavComponent
     ],

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="artist-part">
+        <artist [artistObj]="selectedArtist"></artist>
+    </div>
+
+    <div class="artist-list-wrapper">
+        <ul>
+            <li *ngFor="let artist of artists" (click)="selectArtist(artist)">
+                <img src="{{ getArtistImage(artist) }}"/>
+            </li>
+        </ul>
+    </div>
+</div>

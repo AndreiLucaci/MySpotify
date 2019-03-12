@@ -1,60 +1,24 @@
 <div class="row track" *ngIf="trackObj">
-  <div class="col">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8">
-                <a href="{{ trackObj.external_urls.spotify }}" class="link-header">{{ trackObj.name }}</a>
-              </div>
-              <div class="col-sm-3">
-                <img class="img" src="{{ getTrackImage() }}" />
-              </div>
+    <div class="track card">
+        <div class="wrapper" [ngStyle]="getBackgroundImage()">
+            <div class="data">
+                <div class="content">
+                    <ul class="author">
+                        <li *ngFor="let artist of trackObj.artists">
+                            <a href="{{ artist.external_urls.spotify }}" class="regular-link"> {{ artist.name }}</a>
+                        </li>
+                    </ul>
+                    <h1 class="title">
+                        <a href="{{ trackObj.external_urls.spotify }}">{{ trackObj.name }}</a>
+                    </h1>
+                    <p class="text">
+                        Album:  <a href="{{ trackObj.album.external_urls.spotify }}" class="regular-link"> {{ trackObj.album.name }}</a>
+                    </p>
+                    <p class="text">
+                        Explicit: {{ trackObj.explicit ? "yes" : "no" }}
+                    </p>
+                </div>
             </div>
-          </div>
-        </mat-expansion-panel-header>
-        <div class="track-content">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="label">Album: </div>
-                </div>
-                <div class="col">
-                  <a href="{{ trackObj.album.external_urls.spotify }}" class="regular-link"> {{ trackObj.album.name }}</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="label">Explicit:</div>
-                </div>
-                <div class="col">
-                  <div [className]="trackObj.explicit ? 'red' : 'green'">
-                    {{ trackObj.explicit }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-sm-3">
-                  <div class="label">
-                    Artists:
-                  </div>
-                </div>
-                <div class="col-sm-7">
-                  <ul>
-                    <li *ngFor="let artist of trackObj.artists">
-                      <a href="{{ artist.external_urls.spotify }}" class="regular-link"> {{ artist.name }}</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
+    </div>
 </div>
