@@ -7,8 +7,11 @@
 }
 
 body {
-    overflow: hidden;
     background: linear-gradient(77deg, #ffc867, #f037a6, #324B4E);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed
 }
 
 
@@ -76,19 +79,13 @@ body {
     src: local('Circular Std Black Italic'), url('./assets/fonts/CircularStd-BlackItalic.woff') format('woff');
 }
 
-
-.page {
-    height: 100vh;
-    width: 100vw;
-}
-
 @media (min-width: 50em) {
     .app {
         text-align: justify;
-        background-image: url('./assets/images/female-headphones-red.png');
+        /*background-image: url('./assets/images/female-headphones-red.png');
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: left center;
+        background-position: left center;*/
         margin-top: 0;
     }
 }

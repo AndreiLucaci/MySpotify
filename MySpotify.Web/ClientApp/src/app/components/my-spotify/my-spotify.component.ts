@@ -112,8 +112,8 @@ export class MySpotifyComponent {
     }
 
     clearSelectedItems() {
-        this.selectedArtists = [];
-        this.selectedTracks = [];
+        this.selectedArtists = undefined;
+        this.selectedTracks = undefined;
     }
 
     getLongTermArtist() {

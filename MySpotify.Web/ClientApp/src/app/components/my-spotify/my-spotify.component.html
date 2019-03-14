@@ -1,4 +1,4 @@
-<div class="page">
+<div>
 
     <div *ngIf="isLoading">
         <loading></loading>
@@ -11,100 +11,7 @@
         <artist-page *ngIf="selectedArtists" [artists]="selectedArtists"></artist-page>
         <track-page *ngIf="selectedTracks" [tracks]="selectedTracks"></track-page>
 
-        <!--<div class="items-table">
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div class="container">
-                            <div class="row">
-                                <h2 class="text-center h2">
-                                    Short term - last 4 weeks
-                                </h2>
-                            </div>
-                        </div>
-                    </mat-expansion-panel-header>
-                    <div class="items-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Artists</h3>
-                                </div>
-                                <artist *ngFor="let item of getShortTermArtist()" [artistObj]="item"></artist>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Tracks</h3>
-                                </div>
-                                <track *ngFor="let item of getShortTermTrack()" [trackObj]="item"/>
-                            </div>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-        <div class="items-table">
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div class="container">
-                            <div class="row">
-                                <h2 class="text-center h2">
-                                    Medium term - last 6 months
-                                </h2>
-                            </div>
-                        </div>
-                    </mat-expansion-panel-header>
-                    <div class="items-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Artists</h3>
-                                </div>
-                                <artist *ngFor="let item of getMediumTermArtist()" [artistObj]="item"></artist>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Tracks</h3>
-                                </div>
-                                <track *ngFor="let item of getMediumTermTrack()" [trackObj]="item"/>
-                            </div>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-        <div class="items-table">
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div class="container">
-                            <div class="row">
-                                <h2 class="text-center h2">
-                                    Long term - several years back
-                                </h2>
-                            </div>
-                        </div>
-                    </mat-expansion-panel-header>
-                    <div class="items-body">
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Artists</h3>
-                                </div>
-                                <artist *ngFor="let item of getLongTermArtist()" [artistObj]="item"></artist>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <h3 class="h3">Tracks</h3>
-                                </div>
-                                <track *ngFor="let item of getLongTermTrack()" [trackObj]="item"/>
-                            </div>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>-->
     </div>
 
 </div>

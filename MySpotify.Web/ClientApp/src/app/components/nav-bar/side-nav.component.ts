@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 import { SideNaveSelectedItem } from '../../viewmodels/side-nav-selected-item.viewmodel';
 
@@ -10,7 +10,13 @@ import { SpotifyDuration } from '../../models/spotify-duration.enum';
     templateUrl: './side-nav.component.html',
     styleUrls: ['./side-nav.component.css']
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
+    ngOnInit(): void {
+        setTimeout(() => {
+            this.setSelectedItem(SpotifyUserTopType.Tracks, SpotifyDuration.ShortTerm);
+        }, 1000);
+    }
+
     selectedItem: SideNaveSelectedItem;
 
     @Output() selectedItemChanged = new EventEmitter();

@@ -19,8 +19,4 @@ export class TrackComponent {
             return "";
         }
     }
-
-    getBackgroundImage() {
-        return { 'background': `url(${this.getTrackImage()}) center/cover no-repeat` }
-    }
 }

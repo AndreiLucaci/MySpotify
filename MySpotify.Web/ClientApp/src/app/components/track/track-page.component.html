@@ -1,13 +1,18 @@
 <div class="container">
-    <div class="track-part">
-        <track [trackObj]="selectedTrack" />
-    </div>
-
-    <div class="track-list-wrapper">
-        <ul>
-            <li *ngFor="let track of tracks" (click)="selectTrack(track)">
-                <img src="{{ getTrackImage(track) }}" />
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="track-part">
+                <track [trackObj]="selectedTrack" />
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="track-list-wrapper">
+                <div class="d-flex flex-wrap justify">
+                    <div *ngFor="let track of tracks" (click)="selectTrack(track)">
+                        <img src="{{ getTrackImage(track) }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

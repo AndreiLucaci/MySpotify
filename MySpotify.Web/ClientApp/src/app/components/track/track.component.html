@@ -1,24 +1,23 @@
-<div class="row track" *ngIf="trackObj">
-    <div class="track card">
-        <div class="wrapper" [ngStyle]="getBackgroundImage()">
-            <div class="data">
-                <div class="content">
-                    <ul class="author">
-                        <li *ngFor="let artist of trackObj.artists">
-                            <a href="{{ artist.external_urls.spotify }}" class="regular-link"> {{ artist.name }}</a>
-                        </li>
-                    </ul>
-                    <h1 class="title">
-                        <a href="{{ trackObj.external_urls.spotify }}">{{ trackObj.name }}</a>
-                    </h1>
-                    <p class="text">
-                        Album:  <a href="{{ trackObj.album.external_urls.spotify }}" class="regular-link"> {{ trackObj.album.name }}</a>
-                    </p>
-                    <p class="text">
-                        Explicit: {{ trackObj.explicit ? "yes" : "no" }}
-                    </p>
-                </div>
-            </div>
+<div class="blog-card" *ngIf="trackObj">
+    <div class="title-content">
+        <h3>
+            <a href="{{ trackObj.external_urls.spotify }}">{{ trackObj.name }}</a>
+        </h3>
+        <div class="intro">
+            <p class="text">
+                <a class="artist" *ngFor="let artist of trackObj.artists" href="{{ artist.external_urls.spotify }}"> {{ artist.name }}</a>
+            </p>
+            <hr />
+            <p class="text">
+                Album: <a href="{{ trackObj.album.external_urls.spotify }}" class="regular-link"> {{ trackObj.album.name }}</a>
+            </p>
+            <p class="text">
+                Explicit: {{ trackObj.explicit ? "yes" : "no" }}
+            </p>
         </div>
     </div>
+    <div class="card-info">
+        <img class="img" src="{{ getTrackImage() }}" />
+    </div>
+    <hr />
 </div>
