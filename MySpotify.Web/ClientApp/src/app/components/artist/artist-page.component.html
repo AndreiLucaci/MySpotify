@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="artist-part">
+                <artist [artistObj]="selectedArtist"></artist>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="artist-list-wrapper">
+                <div class="d-flex flex-wrap justify">
+                    <div *ngFor="let artist of artists" (click)="selectArtist(artist)">
+                        <img src="{{ getArtistImage(artist) }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

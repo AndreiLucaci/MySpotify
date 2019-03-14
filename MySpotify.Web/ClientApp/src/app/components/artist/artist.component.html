@@ -1,51 +1,13 @@
-<div class="row artist" *ngIf="artistObj">
-  <div class="col">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8">
-                <a href="{{ artistObj.external_urls.spotify }}" class="link-header">{{ artistObj.name }}</a>
-              </div>
-              <div class="col-sm-3">
-                <img class="img" src="{{ getArtistImage() }}" />
-              </div>
-            </div>
-          </div>
-        </mat-expansion-panel-header>
-        <div class="artist-content">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <div class="label">Followers: </div>
-                </div>
-                <div class="col">
-                  <a href="{{ artistObj.followers.href }}" class="regular-link"> {{ artistObj.followers.total }}</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-sm-3">
-                  <div class="label">
-                    Genres:
-                  </div>
-                </div>
-                <div class="col-sm-7">
-                  <ul>
-                    <li *ngFor="let genre of artistObj.genres">
-                      <div class="regular-link"> {{ genre }}</div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="blog-card" *ngIf="artistObj">
+    <div class="title-content">
+        <h3><a href="{{ artistObj.external_urls.spotify }}">{{ artistObj.name }}</a></h3>
+        <hr />
+        <div class="intro">
+            <p class="text">Followers: <a href="{{ artistObj.followers.href }}" class="regular-link"> {{ artistObj.followers.total }}</a></p>
         </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
+    </div>
+    <div class="card-info">
+        <img class="img" src="{{ getArtistImage() }}"/>
+    </div>
+    <hr />
 </div>
-

@@ -1,55 +1,73 @@
-.track {
-  font-family: 'montserrat';
-  color: #FF8B41;
-  font-size: 14px;
-  padding: 10px;
-  background-color: #324B4E;
-  margin: 20px 0;
-  border: solid 1px #627C7F;
-  border-radius: 3px;
-  box-shadow: 0px 0px 50px 1px rgba(0,54,64,1);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+
+.blog-card {
+    text-align: center;
+}
+
+    .blog-card .img {
+        margin-top: 10px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .blog-card:hover .card-info {
+        opacity: 1;
+        bottom: 70px;
+    }
+
+    .blog-card:hover .color-overlay {
+        background: rgba(84, 104, 110, 0.8);
+    }
+
+.title-content {
+    text-align: center;
+    margin: 70px 0 0 0;
+}
+
+    .title-content a {
+        font-size: inherit;
+    }
+
+a.artist {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #9CC9E3;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+}
+
+hr {
+    width: 50px;
+    height: 3px;
+    margin: 20px auto;
+    border: 0;
+    background: #003B4F;
+}
+
+.intro {
+    width: 170px;
+    margin: 0 auto;
+    color: #DCE3E7;
+    font-family: 'Droid Serif', serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 18px;
 }
 
 a {
-	font-family: 'montserrat';
-	font-size: 14px;
-}
-
-.img {
-  width: 64px;
-  height: 64px;
-  overflow: hidden;
-}
-
-.red {
-  color: #A43D00;
-}
-
-.green {
-  color: #82E9A7
-}
-
-.link-header {
-  display: block;
-  margin-top: 20px;
-  font-size: 22px;
-  color: #FCFCD4;
-}
-
-.regular-link {
-  display: block;
-  font-size: 14px;
-  color: #FF8B41;
-}
-
-.label {
-  color: #FCFCD4;
-}
-
-.track-content {
-  margin-top: 20px;
-}
-
-ul {
-  list-style: none;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-family: 'Droid Serif', serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 18px;
 }

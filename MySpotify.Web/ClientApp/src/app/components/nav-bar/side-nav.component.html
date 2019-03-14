@@ -1,0 +1,41 @@
+<nav class="nav" style="opacity: 1;">
+    <div class="tl">
+        <div class="row">
+            Short term - last 4 weeks
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="menu-item" (click)="setSelectedItem(type.Tracks, duration.ShortTerm)">Tracks</div>
+            </div>
+            <div class="col">
+                <div class="menu-item" (click)="setSelectedItem(type.Artists, duration.ShortTerm)">Artists</div>
+            </div>
+        </div>
+    </div>
+    <div class="tl">
+        <div class="row">
+            Medium term - last 6 months
+        </div>
+        <div class="row">
+            <div class="col">
+                <a class="menu-item" (click)="setSelectedItem(type.Tracks, duration.MediumTerm)">Tracks</a>
+            </div>
+            <div class="col">
+                <a class="menu-item" (click)="setSelectedItem(type.Artists, duration.MediumTerm)">Artists</a>
+            </div>
+        </div>
+    </div>
+    <div class="tl">
+        <div class="row">
+            Long term - several years back
+        </div>
+        <div class="row">
+            <div class="col">
+                <a class="menu-item" (click)="setSelectedItem(type.Tracks, duration.LongTerm)">Tracks</a>
+            </div>
+            <div class="col">
+                <a class="menu-item" (click)="setSelectedItem(type.Artists, duration.LongTerm)">Artists</a>
+            </div>
+        </div>
+    </div>
+</nav>
