@@ -11,4 +11,4 @@ This application sumarises your songs and artists and divides them in three cate
 * Long Term: ~ several years back
 
 ## Look and feel
-![Demo](https://i.imgur.com/O5jzBSY.png)
+![Demo](https://i.imgur.com/4bpugj2.png)
