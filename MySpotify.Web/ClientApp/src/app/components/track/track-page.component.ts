@@ -9,9 +9,12 @@ import { SpotifyTrack } from '../../models/spotify-track.model';
 })
 export class TrackPageComponent implements OnInit {
     ngOnInit() {
-        if (this.tracks !== undefined && this.tracks.length > 0) {
-            this.selectedTrack = this.tracks[0];
-        }
+        let interval = setInterval(() => {
+            if (this.tracks !== undefined && this.tracks.length > 0) {
+                this.selectedTrack = this.tracks[0];
+                clearInterval(interval);
+            }
+        }, 500);
     }
 
     @Input()

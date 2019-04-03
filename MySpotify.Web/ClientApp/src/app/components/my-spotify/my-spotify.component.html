@@ -1,18 +1,12 @@
 <div>
-
     <div *ngIf="isLoading">
         <loading></loading>
     </div>
 
     <div *ngIf="!isLoading" class="container items">
-
         <side-nav (selectedItemChanged)="navSelectedItem($event)"></side-nav>
 
         <artist-page *ngIf="selectedArtists" [artists]="selectedArtists"></artist-page>
         <track-page *ngIf="selectedTracks" [tracks]="selectedTracks"></track-page>
-
-
     </div>
-
 </div>
-
