@@ -10,9 +10,12 @@ import { SpotifyUserTopType } from '../../models/spotify-type.enum';
 })
 export class ArtistPageComponent implements OnInit {
     ngOnInit() {
-        if (this.artists !== undefined && this.artists.length > 0) {
-            this.selectedArtist = this.artists[0];
-        }
+        let interval = setInterval(() => {
+            if (this.artists !== undefined && this.artists.length > 0) {
+                this.selectedArtist = this.artists[0];
+                clearInterval(interval);
+            }
+        }, 500);
     }
 
     @Input()
